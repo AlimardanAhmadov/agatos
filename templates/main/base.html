@@ -1,0 +1,928 @@
+{% load static %}
+{% load compress %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Agatos - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <link href="{% static 'assets/img/favicon.ico' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.ico' %}" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  
+  {% compress css %}
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+  {% endcompress %}
+</head>
+
+<body>
+
+  <header id="header" class="fixed-top header-transparent">
+    <div class="container d-flex align-items-center justify-content-between position-relative">
+
+      <div class="logo">
+        <h1 class="text-light"><a href="#"><span><img src="{% static 'assets/img/main-logo.png' %}" alt="logo" /></span></a></h1>
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+          <li><a class="nav-link scrollto" href="#about">About Us</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto" href="#feedbacks">Our Feedbacks</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+
+    </div>
+  </header>
+  <section id="hero">
+    <video id="bg-video" autoplay loop muted>
+      <source src="{% static 'assets/video/banner_video.mp4' %}" type="video/mp4">
+      <!-- <source src="your-video-file.webm" type="video/webm">
+      <source src="your-video-file.ogg" type="video/ogg"> -->
+    </video>
+    <div class="hero-container" data-aos="fade-up">
+        <div class="container banner__content">
+            <span class="small__caption">welcome to agatos</span>
+            <div class="flex-max">
+                <div class="flex-left">
+                    <h1>Engineering solutions for a better tomorrow</h1>
+                    <div class="flex-r banner__buttons">
+                        <a href="#about" type="button" class="banner__content-button flex-r">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/>
+                            </svg>
+                            ABOUT US
+                        </a>
+                        <a href="#services" type="button" class="banner__content-button flex-r">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <path d="M352 320c88.4 0 160-71.6 160-160c0-15.3-2.2-30.1-6.2-44.2c-3.1-10.8-16.4-13.2-24.3-5.3l-76.8 76.8c-3 3-7.1 4.7-11.3 4.7H336c-8.8 0-16-7.2-16-16V118.6c0-4.2 1.7-8.3 4.7-11.3l76.8-76.8c7.9-7.9 5.4-21.2-5.3-24.3C382.1 2.2 367.3 0 352 0C263.6 0 192 71.6 192 160c0 19.1 3.4 37.5 9.5 54.5L19.9 396.1C7.2 408.8 0 426.1 0 444.1C0 481.6 30.4 512 67.9 512c18 0 35.3-7.2 48-19.9L297.5 310.5c17 6.2 35.4 9.5 54.5 9.5zM80 408a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"/>
+                            </svg>
+                            SERVICES
+                        </a>
+                    </div>
+                </div>
+                <div class="flex-c banner__socials">
+                    <a href="https://www.facebook.com/AgatosOM/?_rdc=2&_rdr" target="_blank" type="button" class="bg-none social-icon flex-c">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                          <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/>
+                      </svg>
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=6585483266" target="_blank" type="button" class="bg-none social-icon flex-c">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                      </svg>
+                    </a>
+                    <a type="button" class="bg-none social-icon flex-c">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path d="M424.7 299.8c2.9-14 4.7-28.9 4.7-43.8 0-113.5-91.9-205.3-205.3-205.3-14.9 0-29.7 1.7-43.8 4.7C161.3 40.7 137.7 32 112 32 50.2 32 0 82.2 0 144c0 25.7 8.7 49.3 23.3 68.2-2.9 14-4.7 28.9-4.7 43.8 0 113.5 91.9 205.3 205.3 205.3 14.9 0 29.7-1.7 43.8-4.7 19 14.6 42.6 23.3 68.2 23.3 61.8 0 112-50.2 112-112 .1-25.6-8.6-49.2-23.2-68.1zm-194.6 91.5c-65.6 0-120.5-29.2-120.5-65 0-16 9-30.6 29.5-30.6 31.2 0 34.1 44.9 88.1 44.9 25.7 0 42.3-11.4 42.3-26.3 0-18.7-16-21.6-42-28-62.5-15.4-117.8-22-117.8-87.2 0-59.2 58.6-81.1 109.1-81.1 55.1 0 110.8 21.9 110.8 55.4 0 16.9-11.4 31.8-30.3 31.8-28.3 0-29.2-33.5-75-33.5-25.7 0-42 7-42 22.5 0 19.8 20.8 21.8 69.1 33 41.4 9.3 90.7 26.8 90.7 77.6 0 59.1-57.1 86.5-112 86.5z"/>
+                      </svg>
+                    </a>
+                </div>
+            </div>
+            <!-- <h2>Choose us for expert solutions tailored to your needs.</h2> -->
+            <div class="scroll-down container">
+                <a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <main id="main">
+
+    <section id="counts" class="counts  section-bg">
+      <div class="container">
+
+        <div class="row no-gutters">
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+            <div class="count-box">
+              <i class="bi bi-emoji-smile"></i>
+              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Happy Clients</strong> consequuntur quae</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+            <div class="count-box">
+              <i class="bi bi-journal-richtext"></i>
+              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Projects</strong> adipisci atque cum quia aut</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+            <div class="count-box">
+              <i class="bi bi-headset"></i>
+              <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Hours Of Support</strong> aut commodi quaerat</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+            <div class="count-box">
+              <i class="bi bi-people"></i>
+              <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Hard Workers</strong> rerum asperiores dolor</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+    <section id="team" class="testimonials section-bg">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+          <h2>Who We Are</h2>
+        </div>
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                    <span>
+                        Office : 421 Tagore Industrial Avenue #02-07 Tagore 8 Singapore, 787805
+                    </span>
+                    <br>
+                    <span>
+                        Since  : 1996
+                    </span>
+                </p>
+                <img src="{% static 'assets/img/team/m-huei.jpg' %}" class="testimonial-img" alt="M-Huei">
+                <h3>Mr. Lee Chin Huei</h3>
+                <h4>Regional Manager</h4>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <p>
+                      <span>
+                        Office :Ruko Rungkut Megah Raya Blok A-32 Surabaya Indonesia, 60293
+                      </span>
+                      <br>
+                      <span>
+                        Since  : 2001
+                      </span>
+                  </p>
+                  <img src="{% static 'assets/img/team/m-eddi.jpg' %}" class="testimonial-img" alt="M-Eddi">
+                  <h3>Mr. Eddie See</h3>
+                  <h4>Team Manager</h4>
+                </div>
+              </div>
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                    <span>
+                        Office : no.8 Xiao Xing Avenue Chengdong Town Haian County China, 226600
+                    </span>
+                    <br>
+                    <span>
+                        Since  : 2005
+                    </span>
+                </p>
+                <img src="{% static 'assets/img/team/m-shan.jpg' %}" class="testimonial-img" alt="M-Shan">
+                <h3>Mr. Meng Shanming</h3>
+                <h4>Team Manager</h4>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="testimonial-item">
+                    <p>
+                        <span>
+                            Office : Office no 308, 3rd Floor Eden Towers Main Boulevard Gulberg Lahore Pakistan, 54660
+                        </span>
+                        <br>
+                        <span>
+                            Since  : 2009
+                        </span>
+                    </p>
+                  <img src="{% static 'assets/img/team/m-shaf.jpg' %}" class="testimonial-img" alt="M-Shaf">
+                  <h3>Mr. Imran Qureshi</h3>
+                  <h4>Technical Manager</h4>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="testimonial-item">
+                    <p>
+                        <span>
+                            UNIT - 1111, TOWER A-1, PLOT-7A/1, CORPORATE PARK, SEC-142, NOIDA, Gautam Buddha Nagar, Uttar Pradesh, India 201301
+                        </span>
+                        <br>
+                        <span>
+                            Since  : 2013
+                        </span>
+                    </p>
+                  <img src="{% static 'assets/img/team/m-shak.jpg' %}" class="testimonial-img" alt="M-Shak">
+                  <h3>Mr. Shakti Bhatt</h3>
+                  <h4>Team Manager</h4>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="testimonial-item">
+                    <p>
+                        <span>
+                            Office : Block 12 Lot 1 Phase I-C Annex San Lorenzo South, Brgy, Dita Sta Rosa, Laguna Philippines, 4026
+                        </span>
+                        <br>
+                        <span>
+                            Since  : 2011
+                        </span>
+                    </p>
+                  <img src="{% static 'assets/img/team/m-fabb.jpg' %}" class="testimonial-img" alt="M-Fabb">
+                  <h3>Mr. Fabian Bacuno</h3>
+                  <h4>Team Manager</h4>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="testimonial-item">
+                    <p>
+                        <span>
+                            Office : Block 12 Lot 1 Phase I-C Annex San Lorenzo South, Brgy, Dita Sta Rosa, Laguna Philippines, 4026
+                        </span>
+                        <br>
+                        <span>
+                            Since  : 2014
+                        </span>
+                    </p>
+                  <img src="{% static 'assets/img/team/m-vher.jpg' %}" class="testimonial-img" alt="M-Vher">
+                  <h3>Mr. Fher Vryle Sestoso</h3>
+                  <h4>Lead Engineer</h4>
+                </div>
+            </div>
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section>
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="row no-gutters container">
+            <div class="section-title" style="padding: 0" data-aos="fade-in" data-aos-delay="100">
+                <h2>Solutions We Offer</h2>
+            </div>
+            <div class="row solution-row no-gutters container">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="solution__img" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Less is more">
+                  </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up">
+                  <h2><strong> Less is more </strong></h1>
+                  <p class="solution-paragraph">
+                    Today, you're expected to do more with less. To help meet your key performance indicators and profitability goals, a proven game plan is key. As a manufacturer, you require flexible, scalable asset management solutions for the entire plant floor. We use a four-step process to create a customized asset management strategy that will help you avoid downtime, ease staffing burdens and get back online quickly with minimal impact on production. we offers holistic, scalable asset optimization solutions tailored to your specific needs. From individual, vendor-agnostic product repairs to comprehensive storeroom, spare parts, and repair management solutions, the Rockwell Automation asset management portfolio helps enhance the performance of your entire production environment.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="row solution-row no-gutters container">
+              <div class="row">
+                <div class="col-lg-6" data-aos="fade-up">
+                  <h2><strong> Truck Tracking System</strong></h1>
+                  <p class="solution-paragraph">
+                    Truck Tracking System works under Milk Reception unit and keep record for every vehicle with respect to its arrival, departure and its stay time at every platform like quality assurance, MRU and CIP. Web based application allow users to operate it from any workstation. Definable quality parameters makes it more useful when it comes to detailed quality analysis.
+                  </p>
+                </div>
+                <div class="col-lg-6">
+                  <div class="solution__img" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Truck Tracking System">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row solution-row no-gutters container">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="solution__img" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1593106410288-caf65eca7c9d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Manufacturing Execution Systems">
+                  </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up">
+                  <h2><strong> Manufacturing Execution Systems</strong></h1>
+                  <p class="solution-paragraph">
+                    Manufacturing Execution Systems Solutions provide users with an “end to end” operations platform for excellence. Using Agatos MES Solutions, manufacturers can increase operational efficiencies, quality, compliance and performance. Productivity can be improved through faster inventory turns, reduced production lead times and swifter new product introductions for faster return on investment (ROI) and enhanced customer satisfaction. These benefits are the result of the right information, at the right time, in the right context for all executions activities pertaining to operations from work order management, through task execution and performance monitoring, providing decision support for planning and optimizing your business. To reach the ultimate goal of operational excellence, Agatos provides the right steps. Agatos MES solutions offer a comprehensive, cohesive way of adopting rigorous operations management, including people, equipment, and materials. With Agatos Software you can incrementally adopt and execute MES, getting control of scale, scope and pace of change. Without the “big bang” of some applications, you can leverage a low risk, step by step implementations approach, with long term sustainability and low a total cost of ownership (TCO). Agatos MES Solutions are based on configurable software which is scalable to effectively support any size of operation, from single line or production facility up to enterprise implementations, with large or multiple plants, including those geographically distributed.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="row no-gutters container">
+                <div class="pt-0 content col-xl-4 d-flex align-items-stretch" data-aos="fade-up">
+                    <div class="content">
+                        <h6 class="fw-700">Less is more</h6>
+                        <p>
+                            Today, you're expected to do more with less. To help meet your key performance indicators and profitability goals, a proven game plan is key. As a manufacturer, you require flexible, scalable asset management solutions for the entire plant floor. We use a four-step process to create a customized asset management strategy that will help you avoid downtime, ease staffing burdens and get back online quickly with minimal impact on production. we offers holistic, scalable asset optimization solutions tailored to your specific needs. From individual, vendor-agnostic product repairs to comprehensive storeroom, spare parts, and repair management solutions, the Rockwell Automation asset management portfolio helps enhance the performance of your entire production environment.
+                        </p>
+                    </div>
+                </div>
+                <div class="pt-0 content col-xl-4 d-flex align-items-stretch" data-aos="fade-up">
+                    <div class="content">
+                        <h6 class="fw-700">Manufacturing Execution Systems</h6>
+                        <p>
+                            Manufacturing Execution Systems Solutions provide users with an “end to end” operations platform for excellence. Using Agatos MES Solutions, manufacturers can increase operational efficiencies, quality, compliance and performance. Productivity can be improved through faster inventory turns, reduced production lead times and swifter new product introductions for faster return on investment (ROI) and enhanced customer satisfaction. These benefits are the result of the right information, at the right time, in the right context for all executions activities pertaining to operations from work order management, through task execution and performance monitoring, providing decision support for planning and optimizing your business. To reach the ultimate goal of operational excellence, Agatos provides the right steps. Agatos MES solutions offer a comprehensive, cohesive way of adopting rigorous operations management, including people, equipment, and materials. With Agatos Software you can incrementally adopt and execute MES, getting control of scale, scope and pace of change. Without the “big bang” of some applications, you can leverage a low risk, step by step implementations approach, with long term sustainability and low a total cost of ownership (TCO). Agatos MES Solutions are based on configurable software which is scalable to effectively support any size of operation, from single line or production facility up to enterprise implementations, with large or multiple plants, including those geographically distributed.
+                        </p>
+                    </div>
+                </div>
+                <div class="pt-0 content col-xl-4 d-flex align-items-stretch" data-aos="fade-up">
+                    <div class="content">
+                        <h6 class="fw-700">Truck Tracking System</h6>
+                        <p>
+                            Truck Tracking System works under Milk Reception unit and keep record for every vehicle with respect to its arrival, departure and its stay time at every platform like quality assurance, MRU and CIP. Web based application allow users to operate it from any workstation. Definable quality parameters makes it more useful when it comes to detailed quality analysis.
+                        </p>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+
+      </div>
+    </section>
+
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+          <h2>Services</h2>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                        <path d="M305.5 135.3c7.1-6.3 9.9-16.2 6.2-25c-2.3-5.3-4.8-10.5-7.6-15.5L301 89.4c-3-5-6.3-9.9-9.8-14.6c-5.7-7.6-15.7-10.1-24.7-7.1l-28.2 9.3c-10.7-8.8-23-16-36.2-20.9L196 27.1c-1.9-9.3-9.1-16.7-18.5-17.8C170.9 8.4 164.2 8 157.4 8h-.7c-6.8 0-13.5 .4-20.1 1.2c-9.4 1.1-16.6 8.6-18.5 17.8L112 56.1c-13.3 5-25.5 12.1-36.2 20.9L47.5 67.8c-9-3-19-.5-24.7 7.1c-3.5 4.7-6.8 9.6-9.9 14.6l-3 5.3c-2.8 5-5.3 10.2-7.6 15.6c-3.7 8.7-.9 18.6 6.2 25l22.2 19.8C29.6 161.9 29 168.9 29 176s.6 14.1 1.7 20.9L8.5 216.7c-7.1 6.3-9.9 16.2-6.2 25c2.3 5.3 4.8 10.5 7.6 15.6l3 5.2c3 5.1 6.3 9.9 9.9 14.6c5.7 7.6 15.7 10.1 24.7 7.1l28.2-9.3c10.7 8.8 23 16 36.2 20.9l6.1 29.1c1.9 9.3 9.1 16.7 18.5 17.8c6.7 .8 13.5 1.2 20.4 1.2s13.7-.4 20.4-1.2c9.4-1.1 16.6-8.6 18.5-17.8l6.1-29.1c13.3-5 25.5-12.1 36.2-20.9l28.2 9.3c9 3 19 .5 24.7-7.1c3.5-4.7 6.8-9.5 9.8-14.6l3.1-5.4c2.8-5 5.3-10.2 7.6-15.5c3.7-8.7 .9-18.6-6.2-25l-22.2-19.8c1.1-6.8 1.7-13.8 1.7-20.9s-.6-14.1-1.7-20.9l22.2-19.8zM109 176a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zM501.7 500.5c6.3 7.1 16.2 9.9 25 6.2c5.3-2.3 10.5-4.8 15.5-7.6l5.4-3.1c5-3 9.9-6.3 14.6-9.8c7.6-5.7 10.1-15.7 7.1-24.7l-9.3-28.2c8.8-10.7 16-23 20.9-36.2l29.1-6.1c9.3-1.9 16.7-9.1 17.8-18.5c.8-6.7 1.2-13.5 1.2-20.4s-.4-13.7-1.2-20.4c-1.1-9.4-8.6-16.6-17.8-18.5L580.9 307c-5-13.3-12.1-25.5-20.9-36.2l9.3-28.2c3-9 .5-19-7.1-24.7c-4.7-3.5-9.6-6.8-14.6-9.9l-5.3-3c-5-2.8-10.2-5.3-15.6-7.6c-8.7-3.7-18.6-.9-25 6.2l-19.8 22.2c-6.8-1.1-13.8-1.7-20.9-1.7s-14.1 .6-20.9 1.7l-19.8-22.2c-6.3-7.1-16.2-9.9-25-6.2c-5.3 2.3-10.5 4.8-15.6 7.6l-5.2 3c-5.1 3-9.9 6.3-14.6 9.9c-7.6 5.7-10.1 15.7-7.1 24.7l9.3 28.2c-8.8 10.7-16 23-20.9 36.2L312.1 313c-9.3 1.9-16.7 9.1-17.8 18.5c-.8 6.7-1.2 13.5-1.2 20.4s.4 13.7 1.2 20.4c1.1 9.4 8.6 16.6 17.8 18.5l29.1 6.1c5 13.3 12.1 25.5 20.9 36.2l-9.3 28.2c-3 9-.5 19 7.1 24.7c4.7 3.5 9.5 6.8 14.6 9.8l5.4 3.1c5 2.8 10.2 5.3 15.5 7.6c8.7 3.7 18.6 .9 25-6.2l19.8-22.2c6.8 1.1 13.8 1.7 20.9 1.7s14.1-.6 20.9-1.7l19.8 22.2zM461 304a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/>
+                    </svg>
+                </div>
+              <h4 class="title"><a>Maintenance</a></h4>
+              <div class="description">
+                We provide maintenance services for those systems that we have delievered. The engineers that have developed the system will also be part of the maintenance team.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M96 0C78.3 0 64 14.3 64 32v96h64V32c0-17.7-14.3-32-32-32zM288 0c-17.7 0-32 14.3-32 32v96h64V32c0-17.7-14.3-32-32-32zM32 160c-17.7 0-32 14.3-32 32s14.3 32 32 32v32c0 77.4 55 142 128 156.8V480c0 17.7 14.3 32 32 32s32-14.3 32-32V412.8C297 398 352 333.4 352 256V224c17.7 0 32-14.3 32-32s-14.3-32-32-32H32z"/></svg>
+                </div>
+              <h4 class="title"><a>ELECTRICAL ENGINEERING</a></h4>
+              <div class="description">
+                We provide power systems, site installation, power quality studies, motors and motor controls development.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                        <path d="M41.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 41.4 86.6zM288 416H576c17.7 0 32 14.3 32 32s-14.3 32-32 32H288c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/>
+                    </svg>
+                </div>
+              <h4 class="title"><a>INDUSTRIAL SOFTWARE</a></h4>
+              <div class="description">
+                We provide solutions that link your legacy systems to your existing control systems so that data can be from anywhere to anybody in the enterprise.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                        <path d="M256 64H384v64H256V64zM240 0c-26.5 0-48 21.5-48 48v96c0 26.5 21.5 48 48 48h48v32H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96v32H80c-26.5 0-48 21.5-48 48v96c0 26.5 21.5 48 48 48H240c26.5 0 48-21.5 48-48V368c0-26.5-21.5-48-48-48H192V288H448v32H400c-26.5 0-48 21.5-48 48v96c0 26.5 21.5 48 48 48H560c26.5 0 48-21.5 48-48V368c0-26.5-21.5-48-48-48H512V288h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H352V192h48c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48H240zM96 448V384H224v64H96zm320-64H544v64H416V384z"/>
+                    </svg>
+                </div>
+              <h4 class="title"><a>INDUSTRIAL NETWORKING</a></h4>
+              <div class="description">
+                <span class="fw-600">We provide advanced analyics for:</span>
+
+                <ul>
+                    <li>- Industrial ethernet</li>
+                    <li>- AS-i</li>
+                    <li>- Profinet, profibus</li>
+                </ul>
+              </div>
+            </div>
+            
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/>
+                    </svg>
+                </div>
+              <h4 class="title"><a>Consultancy</a></h4>
+              <div class="description">
+                <span class="fw-600">Our Agatos's engineer will guide you to build:</span>
+
+                <ul>
+                    <li>- MES architecture</li>
+                    <li>- MES requirement and design specification</li>
+                    <li>- Automation-MES-ERP integration</li>
+                </ul>
+
+                <span class="fw-600">Project acquired:</span>
+
+                <ul>
+                    <li>- Danone MES consultant</li>
+                    <li>- Indolakto MES design</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path d="M256 192L160 96V64h64V32 0h64V32 64h64V96l-96 96zM416 352l-96-96 96-96h32v64h32l32 0v64H480 448v64H416zM224 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32 64l96 96v32H288v32 32H224V480 448H160V416l96-96zM96 352H64l0-64H32 0V224l32 0H64l0-64H96l96 96L96 352z"/>
+                    </svg>
+                </div>
+              <h4 class="title"><a>PANEL ASSEMBLY</a></h4>
+              <div class="description">
+                Our Panel Assembly can be part of a turn-key project or as an individual service based on customer requirements. To ensure quality control, all panels must pass thorough Factory Acceptance Testing (FAT) before shipment, as well as Site Acceptance Testing (SAT) upon installation on-site
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="cta" class="cta">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="text-center">
+          <h3>Learn More About Us</h3>
+          <p> Discover who we are! Learn more about what makes us unique and why we're passionate about what we do.</p>
+          <a class="cta-btn" href="#team">About Us</a>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="feedbacks" class="portfolio">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+          <h2>Our Feedbacks</h2>
+        </div>
+
+        <div class="row" data-aos="fade-in">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-ISO-Certified">ISO Certified</li>
+              <li data-filter=".filter-Recommendation-Letter">Recommendation Letter</li>
+              <li data-filter=".filter-Invensys-Authorized">Invensys Authorized</li>
+              <li data-filter=".filter-Wonderware-Certified">Wonderware Certified</li>
+              <li data-filter=".filter-Siemens-Certified">Siemens Certified</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container" data-aos="fade-up">
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-ISO-Certified">
+            <div class="portfolio-wrap">
+              <img src="{% static 'assets/img/certificates/cert-1.jpeg' %}" class="img-fluid" alt="Cert 1">
+              <div class="portfolio-links">
+                <a href="{% static 'assets/img/certificates/cert-1.jpeg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="ISO Certified"><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-Recommendation-Letter">
+            <div class="portfolio-wrap">
+              <img src="{% static 'assets/img/certificates/cert-2.jpeg' %}" class="img-fluid" alt="Cert 2">
+              <div class="portfolio-links">
+                <a href="{% static 'assets/img/certificates/cert-2.jpeg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Recommendation Letter"><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-Invensys-Authorized">
+            <div class="portfolio-wrap">
+              <img src="{% static 'assets/img/certificates/cert-4.jpeg' %}" class="img-fluid" alt="Cert 4">
+              <div class="portfolio-links">
+                <a href="{% static 'assets/img/certificates/cert-4.jpeg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Invensys Authorized"><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-Wonderware-Certified">
+            <div class="portfolio-wrap">
+              <img src="{% static 'assets/img/certificates/cert-3.jpeg' %}" class="img-fluid" alt="Cert 3">
+              <div class="portfolio-links">
+                <a href="{% static 'assets/img/certificates/cert-3.jpeg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Wonderware Certified"><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-Siemens-Certified">
+            <div class="portfolio-wrap">
+              <img src="{% static 'assets/img/certificates/cert-5.jpeg' %}" class="img-fluid" alt="Cert 5">
+              <div class="portfolio-links">
+                <a href="{% static 'assets/img/certificates/cert-5.jpeg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Siemens Certified"><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="products" class="team">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+          <h2>Products We Offer</h2>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-6">
+            <div class="section__content partners" data-aos="fade-up">
+              <h1><strong>Partner Companies</strong></h1>
+              <p class="section__paragraph">
+                We are also partners of <a href="https://www.siemens.com/global/en/products/automation.html">Siemens</a>, <a href="https://www.siemens.com/global/en/products/automation.html"> Rockwell Automation</a> and <a href="https://www.siemens.com/global/en/products/automation.html">Thames-side</a>.
+              </p>
+            </div>
+          </div>
+
+          <div class="row col-lg-6 company-list">
+            <div class="col-lg-6">
+              <a href="https://www.aveva.com/en/solutions/operations/mom/" target="_blank" class="partner" data-aos="fade-up">
+                <div class="info-box  mb-4">
+                  <img src="{% static 'assets/img/products/wonderware.png' %}" />
+                  <h3>WONDERWARE</h3>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-6">
+              <a href="https://www.bihl-wiedemann.de/en/products" target="_blank" class="partner" data-aos="fade-up">
+                <div class="info-box  mb-4">
+                  <img src="{% static 'assets/img/products/beijer.png' %}" />
+                  <h3>BEIJER ELECTRONICS</h3>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-6">
+              <a href="https://www07.beijerelectronics.com/" target="_blank" class="partner" data-aos="fade-up">
+                <div class="info-box  mb-4">
+                  <img src="{% static 'assets/img/products/wiedemann.png' %}" />
+                  <h3>BIHL WIEDEMANN</h3>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-6">
+              <a href="https://www.siemens.com/global/en.html" target="_blank" class="partner" data-aos="fade-up">
+                <div class="info-box  mb-4">
+                  <img src="{% static 'assets/img/products/siemens.png' %}" />
+                  <h3>SIEMENS</h3>
+                </div>
+              </a>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="contact" class="contact section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Contact</h2>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="info-box mb-4">
+              <i class="bx bx-map"></i>
+              <h3>Singapore</h3>
+              <p>421 Tagore Industrial Avenue #02-07 Tagore 8, 787805</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-envelope"></i>
+              <h3>Email Us</h3>
+              <p><a href="mailto:Info.in@agatos.com">Info.sg@agatos.com</a></p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-phone-call"></i>
+              <h3>Call Us</h3>
+              <p>+65 6513 8081</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="info-box mb-4">
+              <i class="bx bx-map"></i>
+              <h3>China</h3>
+              <p>no.8 Xiao Xing Avenue Chengdong Town Haian County, 226600</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-envelope"></i>
+              <h3>Email Us</h3>
+              <p><a href="mailto:info.in@agatos.com">info.cn@agatos.com</a></p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-phone-call"></i>
+              <h3>Call Us</h3>
+              <p>+86 187 9619 3618</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="info-box mb-4">
+              <i class="bx bx-map"></i>
+              <h3>Indonesia</h3>
+              <p>Ruko Rungkut Megah Raya Blok A-32 Surabaya, 60293</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-envelope"></i>
+              <h3>Email Us</h3>
+              <p><a href="mailto:info.in@agatos.com">info.id@agatos.com</a></p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-phone-call"></i>
+              <h3>Call Us</h3>
+              <p>+62 31 8714 143</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="info-box mb-4">
+              <i class="bx bx-map"></i>
+              <h3>Indonesia</h3>
+              <p>Jalan. Wibowo Mukti No.2
+
+                Ruko Sakura Regency I Blok F-5/8-A
+                
+                Jatiasih, Bekasi</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-envelope"></i>
+              <h3>Email Us</h3>
+              <p><a href="mailto:info.in@agatos.com">info.id@agatos.com</a></p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-phone-call"></i>
+              <h3>Call Us</h3>
+              <p>+62 21 8240 8083</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="info-box mb-4">
+              <i class="bx bx-map"></i>
+              <h3>Philippines</h3>
+              <p>Block 12 Lot 1 Phase I-C Annex
+
+                San Lorenzo South, Brgy, Dita Sta
+                
+                Rosa, Laguna, 4026</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-envelope"></i>
+              <h3>Email Us</h3>
+              <p><a href="mailto:info.in@agatos.com">info.ph@agatos.com</a></p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-phone-call"></i>
+              <h3>Call Us</h3>
+              <p>+63 49 545 4415</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="info-box mb-4">
+              <i class="bx bx-map"></i>
+              <h3>India</h3>
+              <p>UNIT - 1111, TOWER A-1, PLOT-7A/1, CORPORATE PARK,
+
+                SEC-142, NOIDA, Gautam Buddha Nagar,
+                
+                Uttar Pradesh, 201301</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-envelope"></i>
+              <h3>Email Us</h3>
+              <p><a href="mailto:info.in@agatos.com">info.in@agatos.com</a></p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-phone-call"></i>
+              <h3>Call Us</h3>
+              <p>+91 120 4303838</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="info-box mb-4">
+              <i class="bx bx-map"></i>
+              <h3>Pakistan</h3>
+              <p>Office no 308, 3rd Floor Eden Towers
+
+                Main Boulevard Gulberg
+                
+                Lahore, 54660</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-envelope"></i>
+              <h3>Email Us</h3>
+              <p><a href="mailto:info.pk@agatos.com">info.pk@agatos.com</a></p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-phone-call"></i>
+              <h3>Call Us</h3>
+              <p>+92 42 3886 4508</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <a href="https://chat.whatsapp.com/EGHSsN4lWE5GJZv15CGxhp" target="_blank" id="whatsapp-chat">
+    <div class="chat-widget">
+      <div class="widget-icon">
+        <svg width="25" viewBox="0 0 24 24"><defs></defs><path fill="#eceff1" d="M20.5 3.4A12.1 12.1 0 0012 0 12 12 0 001.7 17.8L0 24l6.3-1.7c2.8 1.5 5 1.4 5.8 1.5a12 12 0 008.4-20.3z"></path><path fill="#4caf50" d="M12 21.8c-3.1 0-5.2-1.6-5.4-1.6l-3.7 1 1-3.7-.3-.4A9.9 9.9 0 012.1 12a10 10 0 0117-7 9.9 9.9 0 01-7 16.9z"></path><path fill="#fafafa" d="M17.5 14.3c-.3 0-1.8-.8-2-.9-.7-.2-.5 0-1.7 1.3-.1.2-.3.2-.6.1s-1.3-.5-2.4-1.5a9 9 0 01-1.7-2c-.3-.6.4-.6 1-1.7l-.1-.5-1-2.2c-.2-.6-.4-.5-.6-.5-.6 0-1 0-1.4.3-1.6 1.8-1.2 3.6.2 5.6 2.7 3.5 4.2 4.2 6.8 5 .7.3 1.4.3 1.9.2.6 0 1.7-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"></path></svg>
+      </div>
+      <div class="widget-text">
+        Chat with Us
+      </div>
+    </div>
+  </a>
+
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-info">
+              <h3>Agatos</h3>
+              <p>
+                421 Tagore Industrial Avenue #02-07 Tagore 8,<br>
+                787805, Singapore<br><br>
+                <strong>Phone:</strong> +65 6513 8081
+                <br>
+                <strong>Email:</strong> info.sg@agatos.com<br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="https://www.facebook.com/AgatosOM/?_rdc=2&_rdr" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=6585483266" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#home">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#team">Team</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#services">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#feedbacks">Our Feedbacks</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#services">Maintenance</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#services">Electrical Engineering</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#services">Industrial Software</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#services">Industrial Networking</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#services">Panel Assembly</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#services">Consultancy</a></li>
+            </ul>
+          </div>
+
+          <!-- <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+
+          </div> -->
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; 2017 <strong><span>Agatos</span></strong>. All Rights Reserved
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  {% compress js %}
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/js/main.js' %}"></script>
+  {% endcompress %}
+</body>
+
+</html>
