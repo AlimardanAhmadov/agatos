@@ -1,5 +1,9 @@
 from django.shortcuts import render
+from .models import EmployeeCard
 
 
 def home(request):
-    return render(request, 'main/base.html')
+    context = {
+        'cards': EmployeeCard.objects.all()
+    }
+    return render(request, 'main/base.html', context)

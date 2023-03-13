@@ -10,8 +10,18 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import datetime
 import os
+import django
 from pathlib import Path
+
+from django.utils.encoding import force_str, smart_str
+from django.utils.translation import gettext_lazy
+
+django.utils.encoding.force_text = force_str
+django.utils.translation.ugettext_lazy = gettext_lazy
+django.utils.translation.ugettext = gettext_lazy
+django.utils.encoding.smart_text = smart_str
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +36,7 @@ SECRET_KEY = 'django-insecure-i_=9l$h8@y@t+t4h+oo5rxs4)ikw#5_=$qc5#9j%5bj^2dv(ue
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*', 'https://7f46-212-47-141-225.in.ngrok.io']
 
 
 # Application definition
@@ -39,8 +49,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'main',
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'rest_framework.authtoken',
+    'rest_framework_simplejwt.token_blacklist',
+    'rest_auth',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
     'compressor',
+
+    'main',
+    'employee'
 ]
 
 MIDDLEWARE = [
@@ -226,3 +248,68 @@ COMPRESS_FILTERS = {
 }
 HTML_MINIFY = True
 KEEP_COMMENTS_ON_MINIFYING = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10,
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'UPDATE_LAST_LOGIN': False,
+
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
+    'VERIFYING_KEY': None,
+    'AUDIENCE': None,
+    'ISSUER': None,
+
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+    'USER_AUTHENTICATION_RULE': 'rest_framework_simplejwt.authentication.default_user_authentication_rule',
+
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    'TOKEN_TYPE_CLAIM': 'token_type',
+
+    'JTI_CLAIM': 'jti',
+
+    'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
+    'REFRESH_TOKEN_LIFETIME': datetime.timedelta(hours=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': False,
+}
+
+
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_REQUIRED = True
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'employee.auth_backends.EmailBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+REST_AUTH_SERIALIZERS = {
+    'LOGIN_SERIALIZER': 'employee.serializers.LoginSerializer',
+    'USER_DETAILS_SERIALIZER': 'employee.serializers.UserSerializer',
+}
+
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'employee.serializers.CustomRegisterSerializer'
+}
+
+REST_USE_JWT = True
+
+SITE_ID = 1

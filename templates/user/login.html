@@ -1,0 +1,42 @@
+{% extends 'user/signup.html' %}
+
+{% block content %}
+
+<div class="mt-12 flex flex-col items-center">
+  <h1 class="text-2xl xl:text-3xl font-extrabold">Sign in</h1>
+  <div class="w-full flex-1 mt-8">
+    <form class="mx-auto max-w-xs" data-element="sign-in">
+        <span class="error-field text-xs"></span>
+        <input
+            id="email"
+            name="email"
+            class="s-input w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-4"
+            type="email"
+            placeholder="Email"
+        />
+        <span class="error-field text-xs"></span>
+        <input
+            id="password"
+            name="password"
+            class="s-input w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-4"
+            type="password"
+            placeholder="Password"
+        />
+        <button 
+            type="button"
+            data-action="sign-in"
+            class="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+        >
+            <span class="ml-3"> Sign in </span>
+        </button>
+        <p class="mt-6 text-xs text-gray-600 text-center">
+            Don't have an account?
+            <a href="{% url 'sign_up' %}" class="border-b border-gray-500 border-dotted">
+                Sign up
+            </a>
+        </p>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

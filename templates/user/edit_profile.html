@@ -1,0 +1,671 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'assets/css/dashboard.css' %}" />
+  </head>
+  <body>
+    <nav
+      x-data="{ isOpen: false }"
+      class="z-10 fixed w-full bg-white shadow dark:bg-gray-800"
+    >
+      <div class="container py-4 mx-auto">
+        <div class="lg:flex lg:items-center lg:justify-between">
+          <div class="flex items-center justify-between">
+            <h1 class="text-2xl" href="#">Agatos</h1>
+
+            <!-- Mobile menu button -->
+            <div class="flex lg:hidden">
+              <button
+                x-cloak
+                @click="isOpen = !isOpen"
+                type="button"
+                class="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
+                aria-label="toggle menu"
+              >
+                <svg
+                  x-show="!isOpen"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M4 8h16M4 16h16"
+                  />
+                </svg>
+
+                <svg
+                  x-show="isOpen"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
+          <div
+            x-cloak
+            :class="[isOpen ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']"
+            class="absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white dark:bg-gray-800 lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center"
+          >
+            <div
+              class="flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-8"
+            >
+              <a
+                href="{% url 'home' %}"
+                class="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                >Home</a
+              >
+              <a
+                href="{% url 'profile_preview' request.user.username %}"
+                class="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                >Profile</a
+              >
+            </div>
+
+            <div class="flex items-center mt-4 lg:mt-0">
+              <div x-data="{ isOpen: false }" class="relative inline-block">
+                <!-- Dropdown toggle button -->
+                <button
+                  @click="isOpen = !isOpen"
+                  type="button"
+                  class="flex items-center focus:outline-none"
+                  aria-label="toggle profile dropdown"
+                >
+                  <div
+                    class="w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full flex"
+                  >
+                    {% if request.user.employee.encoded_image != '' %}
+                    <img
+                      src="{{ request.user.employee.encoded_image }}"
+                      class="object-cover w-full h-full"
+                      alt="avatar"
+                    />
+                    {% else %}
+                    <svg class="bi bi-person-circle" fill="rgb(126, 112, 112)" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" fill-rule="evenodd"></path>
+                    </svg>
+                    {% endif %}
+                  </div>
+
+                  <h3 class="mx-2 text-gray-700 dark:text-gray-200 lg:hidden">
+                    {{ request.user.first_name }} {{ request.user.last_name }}
+                  </h3>
+                </button>
+
+                <!-- Dropdown menu -->
+                <div
+                  x-show="isOpen"
+                  @click.away="isOpen = false"
+                  x-transition:enter="transition ease-out duration-100"
+                  x-transition:enter-start="opacity-0 scale-90"
+                  x-transition:enter-end="opacity-100 scale-100"
+                  x-transition:leave="transition ease-in duration-100"
+                  x-transition:leave-start="opacity-100 scale-100"
+                  x-transition:leave-end="opacity-0 scale-90"
+                  class="absolute right-0 z-20 w-48 py-2 mt-2 origin-top-right bg-white rounded-md shadow-xl dark:bg-gray-800"
+                >
+                  <a
+                    data-action='logout'
+                    class="block cursor-pointer px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+                  >
+                    Sign Out
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="main">
+      <div class="container">
+        <div class="flex">
+          <div class="flex-l flex-col flex pb-10">
+            <h1 class="text-2xl font-semibold" id="welcome-text">
+              Welcome {{ request.user.first_name }} {{ request.user.last_name }}
+            </h1>
+            <!-- <div>
+              <label for="domain name" class="block text-sm text-gray-500 dark:text-gray-300">Domain Name</label>
+              <div class="flex items-center mt-2">
+                  <p class="py-3 px-3 text-gray-500 bg-gray-100 dark:bg-gray-800 dark:border-gray-700 border border-r-0 rtl:rounded-r-lg rtl:rounded-l-none rtl:border-l-0 rtl:border-r rounded-l-lg">{{ current_site }}</p>
+                  <input value="{{ request.user.username }}" type="text" placeholder="joedoe" class="py-3 block w-full rounded-l-none rtl:rounded-l-lg rtl:rounded-r-none placeholder-gray-400/70 dark:placeholder-gray-500 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300" />
+              </div>
+            </div> -->
+
+            <div>
+              <label for="file" class="block text-sm error-field"></label>
+
+              <label
+                id="profile_image"
+                for="dropzone-file"
+                class="p-input flex flex-col items-center w-full p-5 mx-auto mt-2 text-center bg-white border-2 border-gray-300 border-dashed cursor-pointer dark:bg-gray-900 dark:border-gray-700 rounded-xl"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-8 h-8 text-gray-500 dark:text-gray-400"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
+                  />
+                </svg>
+
+                <h2
+                  class="mt-1 font-medium tracking-wide text-gray-700 dark:text-gray-200"
+                >
+                  Profile Photo
+                </h2>
+
+                <p
+                  class="mt-2 text-xs tracking-wide text-gray-500 dark:text-gray-400"
+                >
+                  Upload or darg & drop your file PNG, JPG or GIF.
+                </p>
+
+                <input name="" id="dropzone-file" type="file" class="hidden" />
+              </label>
+            </div>
+
+            <div class="accordion-items flex flex-col gap-4">
+              <div
+                class="accordion-item cursor-pointer w-full px-8 py-4 bg-white rounded-lg shadow-md dark:bg-gray-800"
+              >
+                <div class="py-2">
+                  <div
+                    class="flex items-center justify-between accordion-clickable"
+                  >
+                    <p
+                      class="text-lg font-semibold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200"
+                      tabindex="0"
+                      role="link"
+                    >
+                      Personal information
+                    </p>
+                    <svg
+                      class="text-gray-700 rotate-svg"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 320 512"
+                    >
+                      <path
+                        d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="accordion-content">
+                    <div class="flex flex-col gap-4 mt-4">
+                      <div class="flex flex-row gap-4 items-end">
+                        <div class="w-full">
+                          <span class="error-field text-xs"></span>
+                          <input
+                            data-target="first_name"
+                            value="{{ request.user.first_name }}"
+                            name="first_name"
+                            placeholder="First name"
+                            id="first_name"
+                            type="text"
+                            class="p-input block w-full px-4 py-4 mt-2 text-gray-700 bg-white border border-gray-400 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                          />
+                        </div>
+
+                        <div class="w-full">
+                          <span class="error-field text-xs"></span>
+                          <input
+                            data-target="last_name"
+                            value="{{ request.user.last_name }}"
+                            placeholder="Last name"
+                            name="last_name"
+                            id="last_name"
+                            type="text"
+                            class="p-input block w-full px-4 py-4 mt-2 text-gray-700 bg-white border border-gray-400 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                          />
+                        </div>
+                      </div>
+
+                      <div class="flex flex-row gap-4 items-end">
+                        <div class="w-full">
+                          <span class="error-field text-xs"></span>
+                          <input
+                            data-target="since"
+                            value="{{ request.user.employee.since|default:'' }}"
+                            name="since"
+                            id="since"
+                            placeholder="Since"
+                            type="text"
+                            class="p-input block w-full px-4 py-4 mt-2 text-gray-700 bg-white border border-gray-400 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                          />
+                        </div>
+
+                        <div class="w-full">
+                          <span class="error-field text-xs"></span>
+                          <input
+                            data-target="location"
+                            value="{{ request.user.employee.location|default:'' }}"
+                            name="location"
+                            id="location"
+                            placeholder="Location"
+                            type="text"
+                            class="p-input block w-full px-4 py-4 mt-2 text-gray-700 bg-white border border-gray-400 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                          />
+                        </div>
+                      </div>
+
+                      <div class="flex flex-row gap-4 items-end">
+                        <div class="w-full">
+                          <span class="error-field text-xs"></span>
+                          <input
+                            data-target="position"
+                            value="{{ request.user.employee.position|default:'' }}"
+                            name="position"
+                            id="position"
+                            placeholder="Position"
+                            type="text"
+                            class="p-input block w-full px-4 py-4 mt-2 text-gray-700 bg-white border border-gray-400 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                          />
+                        </div>
+
+                        <div class="w-full">
+                          <span class="error-field text-xs"></span>
+                          <input
+                            data-target="email"
+                            value="{{ request.user.email }}"
+                            name="email"
+                            placeholder="Email"
+                            id="email"
+                            type="email"
+                            class="p-input block w-full px-4 py-4 mt-2 text-gray-700 bg-white border border-gray-400 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="accordion-item cursor-pointer w-full px-8 py-4 bg-white rounded-lg shadow-md dark:bg-gray-800"
+              >
+                <div class="py-2">
+                  <div
+                    class="flex items-center justify-between accordion-clickable"
+                  >
+                    <p
+                      class="text-lg font-semibold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200"
+                      tabindex="0"
+                      role="link"
+                    >
+                      QR code
+                    </p>
+                    <svg
+                      class="text-gray-700 rotate-svg"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 320 512"
+                    >
+                      <path
+                        d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="accordion-content">
+                    <div>
+                      <span class="error-field text-xs"></span>
+                      <div class="flex items-center mt-6 p-input" id="username">
+                        <p
+                          id="current-domain"
+                          class="py-3 px-3 text-gray-500 bg-gray-100 dark:bg-gray-800 dark:border-gray-700 border border-r-0 rtl:rounded-r-lg rtl:rounded-l-none rtl:border-l-0 rtl:border-r rounded-l-lg"
+                        >
+                          {{ current_site }}/employee/profile/preview/
+                        </p>
+                        <input
+                          data-target="username"
+                          value="{{ request.user.username }}"
+                          name="username"
+                          type="text"
+                          placeholder="joedoe"
+                          class="py-3 block w-full rounded-l-none rtl:rounded-l-lg rtl:rounded-r-none placeholder-gray-400/70 dark:placeholder-gray-500 rounded-lg border border-gray-400 bg-white px-5 py-2.5 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
+                        />
+                      </div>
+                    </div>
+                    <div class="flex flex-row">
+                      <div class="flex gap-3 sm:gap-x-5 flex-row-reverse w-full">
+                        <button
+                          class="px-6 py-2 mt-5 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+                          data-action="generate-qr-code"
+                          style="background: #4a7bff"
+                        >
+                          Generate
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="accordion-item cursor-pointer w-full px-8 py-4 bg-white rounded-lg shadow-md dark:bg-gray-800"
+              >
+                <div class="py-2">
+                  <div
+                    class="flex items-center justify-between accordion-clickable"
+                  >
+                    <p
+                      class="text-lg font-semibold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200"
+                      tabindex="0"
+                      role="link"
+                    >
+                      Password
+                    </p>
+                    <svg
+                      class="text-gray-700 rotate-svg"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 320 512"
+                    >
+                      <path
+                        d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="accordion-content">
+                    <div class="flex flex-row mt-4 gap-4 items-end">
+                      <div class="w-full">
+                        <span class="error-field text-xs"></span>
+                        <input
+                          placeholder="Old password"
+                          name="old_password"
+                          id="old_password"
+                          type="password"
+                          class="p-input block w-full px-4 py-4 mt-2 text-gray-700 bg-white border border-gray-400 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                        />
+                      </div>
+                    </div>
+                    <div class="flex flex-row mt-4 gap-4 items-end">
+                      <div class="w-full">
+                        <span class="error-field text-xs"></span>
+                        <input
+                          placeholder="New password"
+                          name="password"
+                          id="password"
+                          type="password"
+                          class="p-input block w-full px-4 py-4 mt-2 text-gray-700 bg-white border border-gray-400 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                        />
+                      </div>
+
+                      <div class="w-full">
+                        <span class="error-field text-xs"></span>
+                        <input
+                          placeholder="Confirm password"
+                          name="password2"
+                          id="password2"
+                          type="password"
+                          class="p-inputblock w-full px-4 py-4 mt-2 text-gray-700 bg-white border border-gray-400 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="flex flex-row">
+                      <div class="flex gap-3 sm:gap-x-5 flex-row-reverse w-full">
+                        <button
+                          class="px-6 py-2 mt-5 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+                          data-action="change-password"
+                          style="background: #4a7bff"
+                        >
+                          Save
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-row">
+              <div class="flex items-center gap-3 sm:gap-x-5">
+                <button
+                  class="bg-white dark:bg-gray-900 dark:border-gray-700 dark:hover:bg-gray-800 rounded-lg hover:bg-gray-100 duration-300 transition-colors border px-8 py-4"
+                >
+                  Cancel
+                </button>
+
+                <button
+                  data-action="update-profile"
+                  style="background: #4a7bff"
+                  class="px-8 py-4 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+                >
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="flex-r pb-10">
+            <h1
+              class="text-xl text-gray-800 flex justify-between"
+              style="margin: 0 60px 40px"
+            >
+              Preview
+              {% if request.user.employee.encoded_qr_qode != '' %}
+              <button
+                style="width: 40px; height: 40px; padding: 10px"
+                class="switch-previews bg-white dark:bg-gray-900 dark:border-gray-700 dark:hover:bg-gray-800 rounded-lg hover:bg-gray-100 duration-300 transition-colors border p-5"
+              >
+              {% else %}
+              <button
+                id="switch-previews-btn"
+                style="width: 40px; height: 40px; padding: 10px"
+                class="disabled bg-white dark:bg-gray-900 dark:border-gray-700 dark:hover:bg-gray-800 rounded-lg hover:bg-gray-100 duration-300 transition-colors border p-5"
+              >
+              {% endif %}
+                <svg
+                  style="fill: rgb(81, 81, 81)"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512"
+                >
+                  <path
+                    d="M0 80C0 53.5 21.5 32 48 32h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80zM64 96v64h64V96H64zM0 336c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V336zm64 16v64h64V352H64zM304 32h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H304c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48zm80 64H320v64h64V96zM256 304c0-8.8 7.2-16 16-16h64c8.8 0 16 7.2 16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s7.2-16 16-16s16 7.2 16 16v96c0 8.8-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s-7.2-16-16-16s-16 7.2-16 16v64c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V304zM368 480a16 16 0 1 1 0-32 16 16 0 1 1 0 32zm64 0a16 16 0 1 1 0-32 16 16 0 1 1 0 32z"
+                  />
+                </svg>
+              </button>
+            </h1>
+            <div class="qr-code-preview-section">
+              <div class="qr-code-preview py-10">
+                <span
+                  for="file"
+                  class="block text-sm text-gray-500 dark:text-gray-300 text-center"
+                >
+                  Your QR code
+                </span>
+                <div class="qr-preview">
+                  <img
+                    src="{{ request.user.employee.encoded_qr_qode }}"
+                    alt="QR code"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="phone-graphic">
+              <div class="phone-case">
+                <div class="phone-container-outer">
+                  <div class="phone-container-inner">
+                    <div class="phone-header">
+                      <p class="phone-header-time">1:02</p>
+                      <p class="phone-header-icons">
+                        <span class="material-icons">signal_cellular_alt</span>
+                        <span class="material-icons">wifi</span>
+                        <span class="material-icons battery">battery_std</span>
+                      </p>
+                      <div class="profile-image">
+                        {% if request.user.employee.encoded_image == '' %}
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                        </svg>
+                        {% else %}
+                        <img
+                          src="{{ request.user.employee.encoded_image }}"
+                          alt="Avatar"
+                        />
+                        {% endif %}
+                      </div>
+                    </div>
+                    <div class="phone-content flex flex-col">
+                      <h2
+                        class="text-lg text-center font-semibold"
+                        style="color: #333333"
+                      >
+                        <span data-dest="first_name">
+                          {{ request.user.first_name }}</span
+                        >
+                        <span data-dest="last_name">
+                          {{ request.user.last_name }}
+                        </span>
+                      </h2>
+                      <span class="small text-center" data-dest="position"
+                        >{{ request.user.employee.position }}
+                      </span>
+
+                      <div class="preview-details mt-6 gap-3 flex flex-col">
+                        <div class="w-full">
+                          <input
+                            data-dest="email"
+                            value="{{ request.user.email }}"
+                            placeholder="john@example.com"
+                            class="mt-2 block w-full placeholder-gray-400/70 rounded-lg border border-gray-400 bg-white px-4 py-3 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
+                            disabled
+                          />
+                        </div>
+
+                        <div
+                          class="w-full px-4 py-2 bg-white rounded-lg shadow-md dark:bg-gray-800"
+                        >
+                          <div class="py-2 flex items-center justify-between">
+                            <p
+                              class="font-semibold text-gray-700 dark:text-white"
+                              href="#"
+                              role="link"
+                              tabindex="0"
+                            >
+                              Since:
+                              <span data-dest="since"
+                                >{{ request.user.employee.since|default:'' }}</span
+                              >
+                            </p>
+                          </div>
+                        </div>
+                        <div
+                          class="w-full px-4 py-2 bg-white rounded-lg shadow-md dark:bg-gray-800"
+                        >
+                          <div class="py-2 flex items-center justify-between">
+                            <p
+                              class="font-semibold text-gray-700 dark:text-white"
+                              href="#"
+                              role="link"
+                              tabindex="0"
+                            >
+                              Location: <span data-dest="location">{{ request.user.employee.location }} </span>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="phone-footer"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="flex w-full max-w-sm overflow-hidden bg-gray-300 rounded-lg shadow-md dark:bg-gray-800"
+              style="margin: 0 60px 40px"
+            >
+              <div
+                class="flex items-center justify-center w-13"
+                style="padding: 20px; padding-right: 7px"
+              >
+                <svg
+                  style="fill: #a5a5a5"
+                  class="w-6 h-6 text-white fill-current"
+                  viewBox="0 0 40 40"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM21.6667 28.3333H18.3334V25H21.6667V28.3333ZM21.6667 21.6666H18.3334V11.6666H21.6667V21.6666Z"
+                  ></path>
+                </svg>
+              </div>
+              <div class="px-4 py-4 -mx-3 pr-10">
+                <div class="mx-3">
+                  <p
+                    class="text-sm text-gray-600 dark:text-gray-200 bg-gray-300"
+                    style="
+                      color: #68676c;
+                      font-size: 13px;
+                      line-height: 21px;
+                      vertical-align: middle;
+                      word-break: break-word;
+                    "
+                  >
+                    IMPORTANT: Remember that you can preview and test your QR
+                    codes by clicking on the icon<svg
+                      style="
+                        padding-left: 5px;
+                        fill: rgb(81, 81, 81);
+                        width: 18px;
+                        height: 18px;
+                        display: inline-block;
+                      "
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0 80C0 53.5 21.5 32 48 32h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80zM64 96v64h64V96H64zM0 336c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V336zm64 16v64h64V352H64zM304 32h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H304c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48zm80 64H320v64h64V96zM256 304c0-8.8 7.2-16 16-16h64c8.8 0 16 7.2 16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s7.2-16 16-16s16 7.2 16 16v96c0 8.8-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s-7.2-16-16-16s-16 7.2-16 16v64c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V304zM368 480a16 16 0 1 1 0-32 16 16 0 1 1 0 32zm64 0a16 16 0 1 1 0-32 16 16 0 1 1 0 32z"
+                      ></path>
+                    </svg>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+  ></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="{% static 'assets/js/custom.js' %}"></script>
+</html>
