@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Agatos - Index</title>
+  <title>Agatos - Profiles</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -182,8 +182,8 @@
                       <span classs="small">{{ card.position }}</span>
                     </div>
                     <div class="flip-card-back">
-                      <a href="{% static 'assets/img/QR-code.png' %}" data-gallery="qrCodeGallery" class="portfolio-lightbox" title="{{ card.user.first_name }} {{ card.user.last_name }}">
-                        <img src="{% static 'assets/img/QR-code.png' %}" alt="QR code">
+                      <a href="{{ card.encoded_qr_qode }}" data-gallery="qrCodeGallery" class="portfolio-lightbox" title="{{ card.user.first_name }} {{ card.user.last_name }}">
+                        <img src="{{ card.encoded_qr_qode }}" alt="QR code">
                       </a>
                     </div>
                   </div>
